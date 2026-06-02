@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<!-- saved from url=(0066)file:///Users/vmontrucchio/Downloads/nav_case_study_mockup_54.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Navigating Complexity at HubSpot Scale — Valeria Montrucchio</title>
+<link href="./Navigating Complexity at HubSpot Scale — Valeria Montrucchio_files/css2" rel="stylesheet">
+<script src="./Navigating Complexity at HubSpot Scale — Valeria Montrucchio_files/chart.umd.min.js"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  /* Valeria Montrucchio · Brand Palette 2026 */
+  --orange:  #7B6FA0;
+  --dark:    #1E2E2B;
+  --mid:     #3D5250;
+  --muted:   #7A9490;
+  --light:   #E6EAE7;
+  --border:  #C8D4D0;
+  --cream:   #EFF2F0;
+  --ink:          #1E2E2B;
+  --ink-mid:      #3D5250;
+  --ink-light:    #7A9490;
+  --purple:       #7B6FA0;
+  --purple-mid:   #C5BDDF;
+  --purple-light: #EDE9F5;
+  --green:        #5A8A6A;
+  --green-light:  #E2EDE6;
+  --green-bright: #9FD4A8;
+  --bg:           #EFF2F0;
+  --bg-card:      #E6EAE7;
+  --bg-cream:     #F5F2EC;
+  --bg-dark:      #1E2E2B;
+  --bg-dark-mid:  #253530;
+  --bg-dark-mid2: #2C3E3A;
+  --act1: #1E2E2B;
+  --act2: #253530;
+  --ch1:  #1E2E2B;
+  --ch2:  #253530;
+  --ch3:  #2C3E3A;
+  --ch4:  #1E2E2B;
+  --ch5:  #253530;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; font-size: 16px; }
+
+/* NAV */
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 48px;
+  background: rgba(250,248,244,0.93);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-name { font-size: 13px; font-weight: 500; letter-spacing: 0.03em; }
+.nav-links { display: flex; gap: 28px; }
+.nav-links a { font-size: 12px; color: var(--muted); text-decoration: none; letter-spacing: 0.03em; transition: color 0.2s; }
+.nav-links a:hover { color: var(--dark); }
+.nav-act { font-size: 11px; font-weight: 500; padding: 4px 12px; border-radius: 20px; color: var(--purple); border: 1px solid rgba(123,111,160,0.3); }
+
+/* STICKY DOTS */
+.chapter-dots {
+  position: fixed; right: 20px; top: 50%; transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 10px; z-index: 50;
+}
+.cdot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--border); cursor: pointer;
+  transition: all 0.25s;
+}
+.cdot:hover, .cdot.active { background: var(--orange); transform: scale(1.5); }
+.cdot-tooltip {
+  position: absolute; right: 18px; top: 50%; transform: translateY(-50%);
+  background: var(--dark); color: #fff;
+  font-size: 11px; padding: 4px 10px; border-radius: 4px;
+  white-space: nowrap; opacity: 0; pointer-events: none;
+  transition: opacity 0.15s; margin-right: 4px;
+}
+
+/* HERO */
+.hero { padding: 100px 64px 0; max-width: 1140px; margin: 0 auto; }
+.eyebrow {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--orange); margin-bottom: 24px;
+  display: flex; align-items: center; gap: 12px;
+}
+.eyebrow::after { content: ''; width: 48px; height: 1px; background: var(--purple); }
+.hero-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(44px, 6vw, 76px);
+  line-height: 1.03; color: var(--dark); margin-bottom: 14px; max-width: 820px;
+}
+.hero-title em { font-style: italic; color: var(--green-bright); }
+.hero-intro { font-size: 18px; color: var(--mid); max-width: 600px; line-height: 1.7; margin-bottom: 12px; }
+.hero-meta { display: flex; gap: 40px; flex-wrap: wrap; padding-top: 14px; padding-bottom: 48px; border-top: 1px solid var(--border); }
+.meta-item { }
+.meta-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 5px; }
+.meta-val { font-size: 14px; font-weight: 500; }
+
+/* OPENING DIRECTOR STATEMENT */
+.director-opening {
+  background: var(--bg); color: var(--ink); padding: 80px 64px;
+  border-bottom: 1px solid var(--border);
+}
+.director-opening-inner { max-width: 820px; margin: 0 auto; }
+.director-opening blockquote {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(22px, 3.2vw, 34px); line-height: 1.35; margin-bottom: 24px;
+}
+.director-opening cite { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-light); }
+
+/* ACT DIVIDERS */
+.act-divider {
+  padding: 32px 64px;
+  display: flex; align-items: center; gap: 24px;
+}
+.act-divider-line { flex: 1; height: 1px; background: var(--border); }
+.act-divider-label {
+  font-size: 11px; font-weight: 500; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--muted);
+  display: flex; align-items: center; gap: 10px;
+}
+.act-num-badge {
+  width: 28px; height: 28px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Serif Display', serif; font-size: 14px;
+}
+.act1-badge { background: rgba(28,43,58,0.12); color: var(--act1); }
+.act2-badge { background: rgba(26,43,26,0.12); color: var(--act2); }
+
+/* CHAPTER BLOCKS */
+.chapter { }
+.chapter-header {
+  padding: 80px 64px 60px; color: #fff;
+  position: relative; overflow: hidden;
+}
+.chapter-header::after {
+  content: attr(data-num);
+  position: absolute; right: 56px; bottom: -20px;
+  font-family: 'DM Serif Display', serif;
+  font-size: 200px; line-height: 1; color: rgba(255,255,255,0.035);
+  pointer-events: none; user-select: none;
+}
+.chapter-header-inner { max-width: 1140px; margin: 0 auto; position: relative; }
+.chapter-num { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 16px; }
+.chapter-title-lg {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(28px, 4vw, 50px); line-height: 1.1; margin-bottom: 20px;
+}
+.chapter-hook { font-size: 17px; line-height: 1.75; max-width: 640px; color: rgba(255,255,255,0.7); }
+
+.chapter-body { background: #fff; padding: 60px 64px 80px; }
+.chapter-body-inner { max-width: 1140px; margin: 0 auto; }
+
+/* LAYOUT GRIDS */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+.grid-wide-left { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; }
+.grid-wide-right { display: grid; grid-template-columns: 1fr 2fr; gap: 24px; }
+
+/* MEDIA PLACEHOLDERS */
+.media {
+  border-radius: 12px; overflow: hidden;
+  position: relative; background: var(--light);
+  border: 1.5px dashed var(--border);
+}
+.media.solid { border-style: solid; }
+.media-inner { padding: 40px 28px; min-height: 240px; display: flex; flex-direction: column; justify-content: flex-end; }
+.media.tall .media-inner { min-height: 340px; }
+.media.short .media-inner { min-height: 160px; }
+.media.video { background: var(--dark); border-color: rgba(123,111,160,0.3); }
+.media.video .media-inner { align-items: center; justify-content: center; min-height: 280px; }
+.media-badge {
+  position: absolute; top: 14px; left: 14px;
+  font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 3px 10px; border-radius: 20px;
+}
+.badge-figma { background: rgba(90,138,106,0.12); color: #5A8A6A; border: 1px solid rgba(90,138,106,0.25); }
+.badge-video { background: rgba(123,111,160,0.12); color: var(--purple); border: 1px solid rgba(123,111,160,0.3); }
+.badge-research { background: rgba(100,149,237,0.12); color: #2d6fd4; border: 1px solid rgba(100,149,237,0.25); }
+.badge-data { background: rgba(186,117,23,0.12); color: #8a5500; border: 1px solid rgba(186,117,23,0.25); }
+.media-caption {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.65));
+  padding: 40px 18px 18px;
+}
+.media-caption-title { font-size: 12px; font-weight: 500; color: #fff; margin-bottom: 2px; }
+.media-caption-sub { font-size: 11px; color: rgba(255,255,255,0.55); }
+
+/* play button */
+.play-btn {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: rgba(255,255,255,0.12); border: 1.5px solid rgba(255,255,255,0.35);
+  display: flex; align-items: center; justify-content: center; margin-bottom: 14px;
+}
+.play-tri { width: 0; height: 0; border-top: 9px solid transparent; border-bottom: 9px solid transparent; border-left: 14px solid rgba(255,255,255,0.75); margin-left: 3px; }
+.video-label { font-size: 13px; color: rgba(255,255,255,0.6); text-align: center; line-height: 1.5; max-width: 280px; }
+.video-source { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 8px; text-align: center; }
+
+/* SIM NAV BEFORE */
+.sim-before { background: #233040; border-radius: 8px; overflow: hidden; margin-bottom: 10px; }
+.sim-topbar { background: #162030; height: 44px; display: flex; align-items: center; padding: 0 14px; gap: 0; }
+.sim-logo-b { width: 26px; height: 26px; background: var(--purple); border-radius: 5px; margin-right: 16px; flex-shrink: 0; }
+.sim-hub { height: 44px; display: flex; align-items: center; padding: 0 14px; font-size: 11px; color: rgba(255,255,255,0.45); border-bottom: 2px solid transparent; cursor: default; }
+.sim-hub.on { color: #fff; border-bottom-color: var(--orange); background: rgba(255,255,255,0.04); }
+.sim-body-b { padding: 14px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+.sim-card-b { background: rgba(255,255,255,0.05); border-radius: 6px; height: 44px; }
+
+/* SIM NAV AFTER */
+.sim-after { background: #F0EEE8; border-radius: 8px; overflow: hidden; display: flex; margin-bottom: 10px; }
+.sim-sidebar { width: 50px; background: #162030; display: flex; flex-direction: column; align-items: center; padding: 10px 0; gap: 6px; }
+.sim-icon { width: 30px; height: 30px; border-radius: 7px; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; }
+.sim-icon.on { background: var(--purple); }
+.sim-icon-pip { width: 12px; height: 12px; border-radius: 3px; background: rgba(255,255,255,0.45); }
+.sim-main-area { flex: 1; padding: 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 5px; align-content: start; }
+.sim-main-card { background: #fff; border-radius: 5px; height: 48px; border: 1px solid var(--border); }
+
+/* DIRECTOR QUOTE */
+.dq {
+  background: var(--light); border-left: 3px solid var(--purple);
+  border-radius: 0 10px 10px 0; padding: 28px 32px; margin: 28px 0;
+}
+.dq p { font-family: 'DM Serif Display', serif; font-size: clamp(17px, 2.2vw, 22px); line-height: 1.45; color: var(--dark); margin-bottom: 12px; font-style: normal; }
+.dq cite { font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); }
+
+/* CHALLENGE ROWS */
+.challenge { display: flex; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+.challenge:last-child { border-bottom: none; }
+.challenge-n { font-family: 'DM Serif Display', serif; font-size: 34px; color: var(--border); line-height: 1; width: 44px; flex-shrink: 0; }
+.challenge-title { font-size: 14px; font-weight: 500; color: var(--dark); margin-bottom: 8px; }
+.challenge-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.challenge-before { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.challenge-after { font-size: 13px; color: var(--purple); line-height: 1.6; }
+.challenge-label { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+.challenge-label-b { color: var(--muted); }
+.challenge-label-a { color: var(--purple); }
+
+/* METRICS BAR */
+.metrics-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 32px 0; }
+.metric-cell { background: var(--bg-card); border-left: 3px solid var(--green); border-radius: 0 10px 10px 0; padding: 18px 20px; }
+.metric-big { font-family: 'DM Serif Display', serif; font-size: 32px; color: var(--green); line-height: 1; margin-bottom: 4px; }
+.metric-lbl { font-size: 13px; font-weight: 500; color: var(--green); line-height: 1.4; margin-bottom: 0; }
+.metric-note { font-size: 13px; color: var(--ink); line-height: 1.55; margin-bottom: 10px; }
+
+/* TENSION CARDS */
+.tension-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 24px 0; }
+.tension-card { border-radius: 10px; padding: 24px; border: 1px solid var(--border); background: var(--light); }
+.tension-label { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 10px; }
+.tension-label.danger { color: #8B2020; }
+.tension-label.warn { color: #c67c00; }
+.tension-body { font-size: 13px; color: var(--mid); line-height: 1.7; }
+
+/* CUSTOMER VERBATIMS */
+.verbatim { background: rgba(123,111,160,0.08); border-radius: 8px; padding: 12px 14px; }
+.verbatim-text { font-size: 13px; color: #1E2E2B; line-height: 1.6; margin-bottom: 6px; font-style: italic; }
+.verbatim-tag { display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 10px; background: #EDE9F5; color: var(--orange); margin-right: 6px; }
+.verbatim-meta { font-size: 11px; color: var(--muted); }
+
+/* BOOKMARKS DATA */
+.bk-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0; }
+.bk-metric { background: var(--bg-card); border-left: 3px solid var(--green); border-radius: 0 10px 10px 0; padding: 18px 20px; }
+.bk-num { font-family: 'DM Serif Display', serif; font-size: 32px; color: var(--green); line-height: 1; margin-bottom: 4px; }
+.bk-num span { font-size: 20px; }
+.bk-label { font-size: 13px; font-weight: 500; color: var(--green); line-height: 1.4; margin-bottom: 0; }
+.bk-note { font-size: 13px; color: var(--ink); line-height: 1.55; margin-bottom: 10px; }
+.bk-proof { background: var(--green-light); border-radius: 10px; padding: 20px 24px; margin: 16px 0; border-left: 3px solid var(--green); }
+.bk-proof-label { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.09em; color: var(--green); margin-bottom: 8px; }
+.bk-proof-text { font-size: 14px; color: var(--ink-mid); line-height: 1.7; }
+.chart-wrap { height: 150px; position: relative; }
+
+/* TRANSITION QUOTE (act bridge) */
+.bridge {
+  background: var(--dark); padding: 60px 64px; margin: 0;
+}
+.bridge-inner { max-width: 820px; margin: 0 auto; }
+.bridge blockquote {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(20px, 3vw, 30px); line-height: 1.4; color: #fff; margin-bottom: 16px;
+}
+.bridge cite { font-size: 12px; letter-spacing: 0.07em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+
+/* POLITICAL RESOLUTION */
+.resolution { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); margin: 24px 0; }
+.res-top { background: #EDE9F5; padding: 18px 22px; }
+.res-arrow { background: var(--light); padding: 8px 22px; font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 8px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.res-bot { background: var(--green-light); padding: 18px 22px; }
+.res-label { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+.res-label.r { color: #8B2020; }
+.res-label.g { color: var(--green); }
+.res-text { font-size: 13px; line-height: 1.7; }
+.res-text.r { color: #3D1A1A; }
+.res-text.g { color: var(--ink-mid); }
+
+/* AGENTIC FLOW */
+.agentic-flow { display: flex; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); margin: 24px 0; }
+.af-step { flex: 1; padding: 18px 14px; background: var(--light); border-right: 1px solid var(--border); position: relative; }
+.af-step:last-child { border-right: none; }
+.af-step.highlight { background: var(--purple-light); }
+.af-num { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 5px; }
+.af-num.h { color: var(--purple); }
+.af-title { font-size: 12px; font-weight: 500; margin-bottom: 4px; color: var(--dark); line-height: 1.3; }
+.af-title.h { color: var(--purple); }
+.af-body { font-size: 11px; color: var(--muted); line-height: 1.5; }
+.af-body.h { color: var(--purple); }
+
+/* DATA SECTION */
+.data-clean { background: var(--light); border-radius: 12px; padding: 28px; margin: 24px 0; }
+.data-clean-label { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 16px; }
+.data-row { display: flex; align-items: baseline; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+.data-row:last-child { border-bottom: none; padding-bottom: 0; }
+.data-num { font-family: 'DM Serif Display', serif; font-size: 28px; color: var(--green); line-height: 1; min-width: 100px; flex-shrink: 0; }
+.data-desc { font-size: 13px; color: var(--mid); line-height: 1.5; flex: 1; }
+.data-note { font-size: 11px; color: var(--muted); font-style: italic; }
+
+/* CVR TABLE */
+.cvr-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.cvr-table th { text-align: left; font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); padding: 0 0 10px; border-bottom: 1px solid var(--border); }
+.cvr-table td { padding: 10px 0; border-bottom: 1px solid var(--border); color: var(--mid); }
+.cvr-table tr:last-child td { border-bottom: none; }
+.cvr-num { font-weight: 500; color: var(--dark); }
+.cvr-delta { display: inline-block; font-size: 10px; font-weight: 500; padding: 2px 8px; border-radius: 20px; }
+.delta-g { background: #EAF3DE; color: var(--green); }
+.delta-w { background: #FDF0D8; color: #7A5A20; }
+
+/* TWO PATHS */
+.two-paths { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+.path-card { border-radius: 12px; padding: 28px; }
+.path-down { background: var(--green-light); border: 1px solid var(--border); }
+.path-up { background: var(--purple-light); border: 1px solid var(--purple-mid);E; }
+.path-label { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
+.path-label.down { color: var(--green); }
+.path-label.up { color: var(--purple); }
+.path-title { font-family: 'DM Serif Display', serif; font-size: 20px; line-height: 1.2; margin-bottom: 10px; }
+.path-title.down { color: var(--ink); }
+.path-title.up { color: var(--ink); }
+.path-body { font-size: 13px; line-height: 1.65; }
+.path-body.down { color: var(--ink-mid); }
+.path-body.up { color: var(--ink-mid); }
+
+/* MONETIZATION PARA */
+.mono-para { background: var(--light); border-radius: 10px; padding: 24px 28px; border-left: 3px solid var(--border); margin: 24px 0; }
+.mono-para p { font-size: 15px; color: var(--mid); line-height: 1.8; font-style: italic; }
+
+/* CLOSING */
+.closing { background: var(--dark); padding: 100px 64px; color: #fff; }
+.closing-inner { max-width: 860px; margin: 0 auto; }
+.closing-label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green-bright); margin-bottom: 24px; }
+.closing-title { font-family: 'DM Serif Display', serif; font-size: clamp(34px, 5vw, 60px); line-height: 1.05; margin-bottom: 24px; }
+.closing-sub { font-size: 17px; color: rgba(255,255,255,0.55); line-height: 1.8; max-width: 560px; margin-bottom: 56px; }
+.timeline { margin-top: 8px; }
+.tl-row { display: grid; grid-template-columns: 72px 1fr; gap: 20px; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.07); align-items: start; }
+.tl-row:last-child { border-bottom: none; }
+.tl-year { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--green-bright); }
+.tl-move { font-size: 14px; font-weight: 500; color: #fff; margin-bottom: 4px; }
+.tl-sub { font-size: 12px; color: rgba(255,255,255,0.38); line-height: 1.5; }
+
+/* APPENDIX NOTE */
+.appendix-note { background: rgba(255,255,255,0.04); border-radius: 8px; padding: 16px 20px; margin-top: 48px; }
+.appendix-note p { font-size: 12px; color: rgba(255,255,255,0.3); line-height: 1.6; }
+.appendix-note strong { color: rgba(255,255,255,0.5); font-weight: 500; }
+
+.section-divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+@media (max-width: 800px) {
+  .site-nav { padding: 14px 20px; }
+  .hero, .chapter-body, .closing { padding-left: 24px; padding-right: 24px; }
+  .chapter-header, .director-opening, .bridge, .act-divider { padding-left: 24px; padding-right: 24px; }
+  .grid-2, .grid-wide-left, .grid-wide-right, .tension-pair, .two-paths, .grid-3, .bk-metrics { grid-template-columns: 1fr; }
+  .metrics-bar { grid-template-columns: 1fr 1fr; }
+  .agentic-flow { flex-direction: column; }
+  .af-step { border-right: none; border-bottom: 1px solid var(--border); }
+  .chapter-dots, .nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- DOTS NAV -->
+<nav class="chapter-dots" aria-label="Section navigation">
+  <div class="cdot active" data-section="hero" title="Overview"></div>
+  <div class="cdot" data-section="act1" title="Act 1 — Breaking the deadlock"></div>
+  <div class="cdot" data-section="ch2" title="The JTBD shift"></div>
+  <div class="cdot" data-section="ch3" title="Launch &amp; validation"></div>
+  <div class="cdot" data-section="bridge" title="Bookmarks signal"></div>
+  <div class="cdot" data-section="ch5" title="Personalized nav"></div>
+  <div class="cdot" data-section="closing" title="Closing"></div>
+</nav>
+
+<!-- SITE NAV -->
+<!-- ══ HERO ══ -->
+<section id="hero" class="hero">
+  <div class="eyebrow">Global Navigation · HubSpot</div>
+  <h1 class="hero-title">Navigating <em>complexity</em> at HubSpot scale</h1>
+  <p class="hero-intro">I broke the deadlock that had kept the nav stalled for years. Then went further: building a discovery system — a personalised nav that knows your goals and business intent.</p>
+  <div class="hero-meta">
+    <div class="meta-item"><div class="meta-label">Role</div><div class="meta-val">UX Director, Platform UX</div></div>
+    <div class="meta-item"><div class="meta-label">Scope</div><div class="meta-val">Strategy · Governance · Research · Team Leadership</div></div>
+    <div class="meta-item"><div class="meta-label">Key outcomes</div><div class="meta-val">+16% activation · +22% CRM usage · CVR held</div></div>
+  </div>
+</section>
+
+<!-- ══ DIRECTOR OPENING ══ -->
+
+
+<!-- ══ ACT 1 DIVIDER ══ -->
+<div id="act1" class="act-divider">
+  <div class="act-divider-line"></div>
+  <div class="act-divider-label">
+    <div class="act-num-badge act1-badge">1</div>
+    From selling motions to how customers actually work
+  </div>
+  <div class="act-divider-line"></div>
+</div>
+
+<!-- ══ CHAPTER 1 ══ -->
+<div class="chapter">
+  <div class="chapter-header" data-num="01" style="background: var(--ch1);">
+    <div class="chapter-header-inner">
+      <div class="chapter-num">Chapter 01 · The problem I inherited</div>
+      <h2 class="chapter-title-lg">One nav, every activation target — and a redesign stuck for years</h2>
+      <p class="chapter-hook">HubSpot's nav was built around how we sell — HubSpot's 5 Hubs — and navigation was the only way users discovered what HubSpot could do for them. Every product team's activation numbers depended on it. That's what made restructuring so hard: any change to the IA could have been a threat to some metric. The redesign had been in flight for almost a year. What was missing wasn't a design direction — it was the organizational clarity to move, and the understanding that fixing the nav was step one of a longer journey, not the destination.</p>
+    </div>
+  </div>
+
+  <div class="chapter-body">
+    <div class="chapter-body-inner">
+
+      <!-- CHAPTER 1 ASSETS -->
+      <div class="grid-2" style="margin-bottom:24px;align-items:start;">
+
+        <!-- VIDEO: original nav -->
+        <div>
+          <p style="font-size:10px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:8px;font-weight:500;">Video · Original horizontal navigation</p>
+          <div style="background:var(--bg-dark);border-radius:10px;overflow:hidden;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;border:1px solid var(--border);">
+            <!-- Replace src with your video file or Loom/Vimeo embed URL -->
+            <!-- Option A: local file → <video src="nav-original.mp4" controls style="width:100%;height:100%;object-fit:cover;"></video> -->
+            <!-- Option B: Loom embed → <iframe src="https://www.loom.com/embed/YOUR_ID" frameborder="0" allowfullscreen style="width:100%;height:100%;"></iframe> -->
+            <div style="width:44px;height:44px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.3);display:flex;align-items:center;justify-content:center;">
+              <div style="width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-left:14px solid rgba(255,255,255,0.6);margin-left:3px;"></div>
+            </div>
+            <p style="font-size:12px;color:rgba(255,255,255,0.4);text-align:center;">Original nav · video<br><span style="font-size:10px;">Replace with video file or Loom embed</span></p>
+          </div>
+          <p style="font-size:11px;color:var(--muted);margin-top:6px;line-height:1.5;">Hub-centric horizontal nav — shows the switching behaviour and lack of scalability</p>
+        </div>
+
+        <!-- SCREENSHOT: original nav -->
+        <div>
+          <p style="font-size:10px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:8px;font-weight:500;">Screenshot · Original horizontal navigation</p>
+          <div style="background:var(--bg-card);border-radius:10px;overflow:hidden;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;border:1.5px dashed var(--border);">
+            <!-- Replace with: <img src="nav-original-screenshot.png" style="width:100%;height:100%;object-fit:cover;" alt="Original HubSpot horizontal navigation"> -->
+            <p style="font-size:12px;color:var(--muted);text-align:center;">nav-original-screenshot.png<br><span style="font-size:10px;">Upload to GitHub alongside index.html</span></p>
+          </div>
+          <p style="font-size:11px;color:var(--muted);margin-top:6px;line-height:1.5;">Static reference — the full hub bar visible, no room to scale</p>
+        </div>
+
+      </div>
+
+      <div class="grid-wide-left">
+        <div>
+          <div class="challenge">
+            <div class="challenge-n">01</div>
+            <div style="flex:1;">
+              <div class="challenge-title">Monetization risk</div>
+              <div class="challenge-cols">
+                <div><div class="challenge-label challenge-label-b">The problem</div><div class="challenge-before">Paywalled items cluttered wayfinding — but moving them risked reducing conversion pressure. Nobody wanted to own that tradeoff without hard evidence.</div></div>
+                <div><div class="challenge-label challenge-label-a">How I solved it</div><div class="challenge-after">Talked to many customers across all roles, built an experimentation structure to test hypotheses. The data ultimately showed CVR held — and in some cases PQLs increased.</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="challenge">
+            <div class="challenge-n">02</div>
+            <div style="flex:1;">
+              <div class="challenge-title">Leadership alignment across five Hubs</div>
+              <div class="challenge-cols">
+                <div><div class="challenge-label challenge-label-b">The problem</div><div class="challenge-before">Every Hub leader had activation targets tied to nav visibility. Any IA change felt like a threat to their numbers. Getting alignment meant navigating five different priorities simultaneously.</div></div>
+                <div><div class="challenge-label challenge-label-a">How I navigated it</div><div class="challenge-after">Maintained careful, continuous communication with all leaders throughout. No surprises. Brought usage data, JTBD evidence, and each Hub's strategy into a shared model — so decisions felt data-driven, not politically imposed.</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="challenge">
+            <div class="challenge-n">03</div>
+            <div style="flex:1;">
+              <div class="challenge-title">Unclear ownership</div>
+              <div class="challenge-cols">
+                <div><div class="challenge-label challenge-label-b">The problem</div><div class="challenge-before">The navigation team owned nav BE and FE — but ownership of where tools would go and who controlled the overall IA was unclear. "Who decides" was a recurring question in every cross-team review.</div></div>
+                <div><div class="challenge-label challenge-label-a">How I solved it</div><div class="challenge-after">Built governance before it was needed — request guidelines, decision frameworks, clear ownership lines. Governance wasn't overhead. It was the precondition for moving at all.</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="dq" style="margin-top:0;">
+            <p>Five product lines, each with their own tools, strategies, and activation goals. I structured the IA by synthesising tool usage data, JTBD frameworks, and each Hub's strategy into a coherent model — backed by multiple rounds of research and sustained alignment with leadership until the direction became something everyone could stand behind and ship.</p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ══ CHAPTER 2 ══ -->
+<div id="ch2" class="chapter">
+  <div class="chapter-header" data-num="02" style="background: var(--ch2);">
+    <div class="chapter-header-inner">
+      <div class="chapter-num">Chapter 02 · The structural bet</div>
+      <h2 class="chapter-title-lg">From hub logic to jobs-to-be-done</h2>
+      <p class="chapter-hook">When I joined, the first decision I led was to move to a JTBD model — but the design was still anchored on a horizontal layout. I made the call to go vertical: more scalable, aligned with industry standards, and better suited to a platform that would keep growing. Then I held one principle under constant pressure: one tool, one place.</p>
+    </div>
+  </div>
+
+  <div class="chapter-body">
+    <div class="chapter-body-inner">
+
+      <div class="grid-2" style="margin-bottom:28px;align-items:start;">
+
+        <!-- GIF: vertical nav tested with customers -->
+        <div>
+          <p style="font-size:10px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:8px;font-weight:500;">GIF · Vertical navigation — customer testing</p>
+          <div style="background:var(--bg-card);border-radius:10px;overflow:hidden;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;border:1.5px dashed var(--border);">
+            <!-- Replace with: <img src="nav-vertical.gif" style="width:100%;height:100%;object-fit:cover;" alt="Vertical JTBD navigation"> -->
+            <!-- Or for better performance: <video src="nav-vertical.mp4" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;"></video> -->
+            <p style="font-size:12px;color:var(--muted);text-align:center;">nav-vertical.gif<br><span style="font-size:10px;">Upload to GitHub alongside index.html</span></p>
+          </div>
+          <p style="font-size:11px;color:var(--muted);margin-top:6px;line-height:1.5;">New vertical JTBD nav — tested with 141 customers, Sep 2023. 85% positive first impressions.</p>
+        </div>
+
+        <!-- GOVERNANCE PRINCIPLE -->
+        <div>
+          <div style="background:var(--bg-card);border-left:3px solid var(--purple);border-radius:0 10px 10px 0;padding:22px 26px;height:100%;">
+            <p style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--purple);margin-bottom:10px;">Governance principle</p>
+            <p style="font-size:15px;color:var(--ink);line-height:1.75;">Tools were grouped into JTBD categories, but each tool lived in exactly one menu. No duplicates. This preserved IA integrity — we reduced the findability problem. We knew we hadn't eliminated it.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- REAL CUSTOMER QUOTES -->
+      <div class="grid-2" style="margin-bottom:20px;">
+        <div>
+          <div style="background:rgba(123,111,160,0.08);border-radius:8px;padding:12px 14px;">
+            <p style="font-size:14px;font-style:italic;color:#1E2E2B;line-height:1.6;margin-bottom:6px;">"It feels a lot cleaner… Visually it feels less overwhelming."</p>
+            <p style="font-size:11px;color:var(--muted);">Noraya · Service Support · HubSpot customer · Moderated study</p>
+          </div>
+        </div>
+        <div>
+          <div style="background:rgba(123,111,160,0.08);border-radius:8px;padding:12px 14px;">
+            <p style="font-size:14px;font-style:italic;color:#1E2E2B;line-height:1.6;margin-bottom:6px;">"It reminds me of other CRM systems, the interface is very clean and easy to navigate."</p>
+            <p style="font-size:11px;color:var(--muted);">Non-customer · First impression · Unmoderated study</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- RESEARCH STAT -->
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:0;">
+        <div style="background:var(--bg-card);border-left:3px solid var(--green);border-radius:0 10px 10px 0;padding:18px 20px;">
+          <div style="font-family:&#39;DM Serif Display&#39;,serif;font-size:32px;color:var(--green);line-height:1;margin-bottom:4px;">85%</div>
+          <div style="font-size:13px;font-weight:500;color:var(--green);line-height:1.4;margin-bottom:10px;">Positive first impressions</div>
+          <div style="font-size:13px;color:var(--ink);line-height:1.55;">Of first-impression reactions to the proposed nav were positive — matching the existing nav's 84% baseline. The research gave us confidence to move — not just enthusiasm, but data.</div>
+        </div>
+        <div style="background:var(--bg-card);border-left:3px solid var(--green);border-radius:0 10px 10px 0;padding:18px 20px;">
+          <div style="font-family:&#39;DM Serif Display&#39;,serif;font-size:32px;color:var(--green);line-height:1;margin-bottom:4px;">↑</div>
+          <div style="font-size:13px;font-weight:500;color:var(--green);line-height:1.4;margin-bottom:10px;">Ease of use across task types</div>
+          <div style="font-size:13px;color:var(--ink);line-height:1.55;">Ease of use improved across General, Sales, and Marketing tasks. An intuitive structure that matched how customers actually work.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ══ CHAPTER 3 ══ -->
+<div id="ch3" class="chapter">
+  <div class="chapter-header" data-num="03" style="background: var(--ch3);">
+    <div class="chapter-header-inner">
+      <div class="chapter-num">Chapter 03 · Launch</div>
+      <h2 class="chapter-title-lg">Validated in market — and evolved from customer feedback</h2>
+      <p class="chapter-hook">The data said the structure was right. The feedback said the interaction model needed work. My job was to make sure those two things were heard separately — so we could iterate on the real problem, the interaction, and not the IA.</p>
+    </div>
+  </div>
+
+  <div class="chapter-body">
+    <div class="chapter-body-inner">
+
+      <div class="metrics-bar">
+        <div class="metric-cell">
+          <div class="metric-big">+16%</div>
+          <div class="metric-lbl">Tool-level activation</div>
+          <div class="metric-note">Users found the tools they needed to complete their job — the IA was working.</div>
+        </div>
+        <div class="metric-cell">
+          <div class="metric-big">2</div>
+          <div class="metric-lbl">Top nav switches eliminated</div>
+          <div class="metric-note">Users stopped jumping between Hubs to complete their work — the JTBD structure was more intuitive.</div>
+        </div>
+        <div class="metric-cell">
+          <div class="metric-big">↑</div>
+          <div class="metric-lbl">Ease-of-use scores across main Hubs</div>
+          <div class="metric-note">An intuitive, jobs-focused IA felt easier to use — customers oriented faster and with more confidence.</div>
+        </div>
+        <div class="metric-cell">
+          <div class="metric-big">0</div>
+          <div class="metric-lbl">Monetization impact</div>
+          <div class="metric-note">The nav's role in discovery and activation was preserved — a better IA did not come at a commercial cost.</div>
+        </div>
+      </div>
+
+      <p style="font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:14px;font-weight:500;">↗ Video · Loom walkthrough — hover vs click, workspace switching, bookmarks · Figma: Navigation refresh 2024</p>
+      <div class="media video" style="margin-bottom:28px;">
+        <span class="media-badge badge-video">Video · 2–3 min Loom</span>
+        <div class="media-inner">
+          <div class="play-btn"><div class="play-tri"></div></div>
+          <div class="video-label">2024 nav interaction model — hover vs click, workspace switching, bookmark workflow</div>
+          <div class="video-source">Record over Figma: Navigation refresh 2024 prototype</div>
+        </div>
+      </div>
+
+      <!-- CUSTOMER FEEDBACK + SOLUTION — same structure as Chapter 1 challenges -->
+      <div style="margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--border);">
+        <p style="font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:6px;">3,000+ in-app survey responses · July 2024</p>
+        <h3 style="font-family:&#39;DM Serif Display&#39;,serif;font-size:clamp(20px,2.5vw,28px);color:var(--ink);line-height:1.2;">What customers told us — and how we responded</h3>
+      </div>
+
+      <div class="challenge">
+        <div class="challenge-n">01</div>
+        <div style="flex:1;">
+          <div class="challenge-title">Too many clicks — 35.6%</div>
+          <div class="challenge-cols">
+            <div>
+              <div class="challenge-label challenge-label-b">Customer feedback</div>
+              <div class="challenge-before">
+                <div style="background:rgba(123,111,160,0.08);border-radius:8px;padding:12px 14px;">
+                <p style="font-size:13px;font-style:italic;color:#1E2E2B;line-height:1.6;margin-bottom:6px;">"Too much clicking is involved. I want to just hover over the sections I want to expand rather than clicking every time."</p>
+                <p style="font-size:11px;color:var(--muted);">In-app survey · July 2024</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="challenge-label challenge-label-a">How we solved it</div>
+              <div class="challenge-after">Removed the initial click requirement and the expand-on-hover interaction. Users no longer need to click to expand, making the interaction feel immediate and reducing the perceived step count. The nav no longer activates by proximity — only by intent.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="challenge">
+        <div class="challenge-n">02</div>
+        <div style="flex:1;">
+          <div class="challenge-title">Disruptive hover — 31.4%</div>
+          <div class="challenge-cols">
+            <div>
+              <div class="challenge-label challenge-label-b">Customer feedback</div>
+              <div class="challenge-before">
+                <div style="background:rgba(123,111,160,0.08);border-radius:8px;padding:12px 14px;">
+                <p style="font-size:13px;font-style:italic;color:#1E2E2B;line-height:1.6;margin-bottom:6px;">"The bar keeps opening when you come near the left. It makes working in the left column very difficult."</p>
+                <p style="font-size:11px;color:var(--muted);">In-app survey · July 2024</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="challenge-label challenge-label-a">Same fix</div>
+              <div class="challenge-after">Both issues shared the same root cause — the hover-to-expand interaction. Removing it addressed the click perception and the disruptive hover in one change.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="challenge" style="border-bottom:none;">
+        <div class="challenge-n">03</div>
+        <div style="flex:1;">
+          <div class="challenge-title">Takes up too much space — 18.8%</div>
+          <div class="challenge-cols">
+            <div>
+              <div class="challenge-label challenge-label-b">Customer feedback</div>
+              <div class="challenge-before">
+                <div style="background:rgba(123,111,160,0.08);border-radius:8px;padding:12px 14px;">
+                <p style="font-size:13px;font-style:italic;color:#1E2E2B;line-height:1.6;margin-bottom:6px;">"I like my horizontal space — you have taken it away for no reason while leaving a top bar which is mostly empty."</p>
+                <p style="font-size:11px;color:var(--muted);">In-app survey · July 2024</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="challenge-label challenge-label-a">How we solved it</div>
+              <div class="challenge-after">Updated the secondary menu from a full panel to a floating design, significantly reducing the nav's footprint. The nav now feels lighter and less intrusive — drawing less attention while you work.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- NPS RECOVERY — dq style -->
+      <div class="dq" style="margin-top:28px; border-left-color: var(--green);">
+        <p style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--green);margin-bottom:10px;">NPS recovered — within 6 weeks</p>
+        <p>Launch caused a short-term NPS dip. We immediately made the changes and NPS recovered in less than 2 months to pre-launch levels, staying stable for 3 continuous weeks. Nav-specific complaints dropped to ~5 per week. Daily monitoring stopped.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+<!-- ══ CHAPTER 4 — BOOKMARKS ══ -->
+<div id="bridge" class="chapter">
+  <div class="chapter-header" data-num="04" style="background: var(--ch4);">
+    <div class="chapter-header-inner">
+      <div class="chapter-num">Chapter 04 · The signal that changed everything</div>
+      <h2 class="chapter-title-lg">Bookmarks validated the hypothesis before we built the system</h2>
+      <p class="chapter-hook">We shipped bookmarks. 59% of users adopted them within weeks — and didn't stop. They didn't want us to organise HubSpot better for them. They wanted to organise it themselves. That signal became the foundation for a personalized system.</p>
+    </div>
+  </div>
+
+  <div class="chapter-body">
+    <div class="chapter-body-inner">
+
+      <div class="bk-metrics">
+        <div class="bk-metric">
+          <div class="bk-num">~59<span>%</span></div>
+          <div class="bk-label">Of nav-active users adopted bookmarks</div>
+          <div class="bk-note">Broad, durable — not a novelty spike. Users made it part of their daily workflow.</div>
+        </div>
+        <div class="bk-metric">
+          <div class="bk-num">3–6</div>
+          <div class="bk-label">Bookmarks saved by typical active user</div>
+          <div class="bk-note">Users built real workflows around shortcuts — actively curating their nav, not just trying it once.</div>
+        </div>
+        <div class="bk-metric">
+          <div class="bk-num">0.64<span>%</span></div>
+          <div class="bk-label">Bounce rate after a bookmark click</div>
+          <div class="bk-note">Users got exactly where they intended, first time — no recovery behaviour.</div>
+        </div>
+      </div>
+
+      <p style="font-size:17px;color:var(--ink-mid);line-height:1.8;max-width:640px;margin:28px 0 12px;">User-controlled navigation outperformed any taxonomy we could design for them. When users shaped their own navigation, they used the product with precision because they knew what they needed. That behavioural signal became the case for building a full discovery system around each user.</p>
+
+      <p style="font-size:17px;color:var(--ink);line-height:1.8;max-width:640px;margin:0 0 0;font-weight:500;">From one navigation for everyone, to a different nav for each user.</p>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══ ACT 2 DIVIDER ══ -->
+<div class="act-divider" style="background:#fff;">
+  <div class="act-divider-line"></div>
+  <div class="act-divider-label">
+    <div class="act-num-badge act2-badge">2</div>
+    From one navigation for everyone to a discovery system that knows each user
+  </div>
+  <div class="act-divider-line"></div>
+</div>
+
+<!-- ══ CHAPTER 5 — PERSONALIZED NAV ══ -->
+<div id="ch5" class="chapter">
+  <div class="chapter-header" data-num="05" style="background: var(--ch5);">
+    <div class="chapter-header-inner">
+      <div class="chapter-num">Chapter 05 · Personalized navigation</div>
+      <h2 class="chapter-title-lg">Intent-based system and a personalized nav.</h2>
+      <p class="chapter-hook">Users see a nav that helps them for that moment in their journey. Nobody loses.</p>
+    </div>
+  </div>
+
+  <div class="chapter-body">
+    <div class="chapter-body-inner">
+
+      <!-- RESOLUTION — problem/solution style -->
+      <div class="challenge" style="border-bottom:none;padding-top:0;">
+        <div style="flex:1;">
+          <div class="challenge-cols">
+            <div>
+              <div class="challenge-label challenge-label-b">The old dynamic — static IA</div>
+              <div class="challenge-before">Navigation was the only discovery surface — and all Hubs' activation targets depended on it. Any IA change threatened someone's metric. The static IA forced a zero-sum negotiation: someone had to win, someone had to lose.</div>
+            </div>
+            <div>
+              <div class="challenge-label challenge-label-a">The new dynamic — adaptive system</div>
+              <div class="challenge-after">Personalized nav makes that negotiation irrelevant. Every group's tools surface for the customers who need them, through the surface that makes sense for that moment. Nobody loses.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIDEO: personalized nav -->
+      <div style="margin-top:28px;">
+        <p style="font-size:10px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:8px;font-weight:500;">Video · Personalized navigation walkthrough</p>
+        <div style="background:var(--bg-dark);border-radius:10px;overflow:hidden;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;border:1px solid var(--border);">
+          <!-- Replace with: <video src="nav-personalized.mp4" controls style="width:100%;height:100%;object-fit:cover;"></video> -->
+          <!-- Or Loom: <iframe src="https://www.loom.com/embed/YOUR_ID" frameborder="0" allowfullscreen style="width:100%;height:100%;"></iframe> -->
+          <div style="width:44px;height:44px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.3);display:flex;align-items:center;justify-content:center;">
+            <div style="width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-left:14px solid rgba(255,255,255,0.6);margin-left:3px;"></div>
+          </div>
+          <p style="font-size:12px;color:rgba(255,255,255,0.4);text-align:center;">Personalized navigation · video walkthrough<br><span style="font-size:10px;">Replace with video file or Loom embed</span></p>
+        </div>
+      </div>
+
+      <!-- AGENTIC SYSTEM -->
+      <div style="margin:40px 0 20px;padding-top:32px;border-top:1px solid var(--border);">
+        <p style="font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--purple);margin-bottom:10px;">Navigation as the surface of an agentic onboarding system</p>
+        <h3 style="font-family:&#39;DM Serif Display&#39;,serif;font-size:clamp(22px,3vw,34px);color:var(--ink);line-height:1.2;margin-bottom:16px;max-width:680px;">The personalized nav isn't a smarter menu.</h3>
+        <p style="font-size:18px;color:var(--ink-mid);line-height:1.8;max-width:640px;margin-bottom:0;">It's the first moment a new HubSpot customer sees a product that already knows something about them — built from their stated goals, enriched by data about who they are.</p>
+      </div>
+
+      <div class="agentic-flow">
+        <div class="af-step highlight">
+          <div class="af-num h">Intake</div>
+          <div class="af-title h">User declares goals</div>
+          <div class="af-body h">At signup, you tell us what you're trying to accomplish. The signal the whole system builds from.</div>
+        </div>
+        <div class="af-step highlight">
+          <div class="af-num h">Data enrichment</div>
+          <div class="af-title h">We enrich who you are</div>
+          <div class="af-body h">Company data, cohort of similar users, industry and size. A richer picture than what you typed.</div>
+        </div>
+        <div class="af-step highlight">
+          <div class="af-num h">Nav output</div>
+          <div class="af-title h">Your nav appears</div>
+          <div class="af-body h">Opinionated template matched to your goals and profile. Not all of HubSpot — the version built for you.</div>
+        </div>
+        <div class="af-step">
+          <div class="af-num">Ownership</div>
+          <div class="af-title">You take over</div>
+          <div class="af-body">Pin, reorder, group. The smart default becomes fully yours to shape as you grow.</div>
+        </div>
+        <div class="af-step">
+          <div class="af-num">Admin layer</div>
+          <div class="af-title">Enterprise governance</div>
+          <div class="af-body">Admins assign templates org-wide. Individual flexibility within guardrails they set.</div>
+        </div>
+      </div>
+
+      <!-- TWO PATHS INTRO -->
+      <div style="margin:28px 0 24px;">
+        <h3 style="font-family:&#39;DM Serif Display&#39;,serif;font-size:clamp(20px,2.5vw,28px);color:var(--ink);line-height:1.2;margin-bottom:12px;">Upmarket / Downmarket needs</h3>
+        <p style="font-size:16px;color:var(--ink-mid);line-height:1.8;max-width:680px;">Downmarket users need HubSpot to reduce overwhelm for the individual — a better default nav shaped around who they are. Upmarket customers don't just need a simpler nav: they need an admin-managed navigation system. The ability to shape, govern, and roll out navigation across teams. A control plane, not a preference.</p>
+      </div>
+
+      <!-- TWO PATHS -->
+      <div class="two-paths">
+        <div class="path-card path-down">
+          <div class="path-label down">Downmarket path</div>
+          <div class="path-title down">Reduce overwhelm. Speed time-to-value.</div>
+          <p class="path-body down" style="margin-bottom:20px;">Starter packs, curated nav for the job you hired HubSpot for, fewer irrelevant options on day one. Activation through relevance, not instruction.</p>
+
+        </div>
+        <div class="path-card path-up">
+          <div class="path-label up">Upmarket path</div>
+          <div class="path-title up">Admin control. Governance. Precision.</div>
+          <p class="path-body up" style="margin-bottom:20px;">Admin-controlled templates, nav governance by role, the ability to shape the platform for an entire org. Enterprise readiness without removing individual flexibility.</p>
+
+        </div>
+      </div>
+
+
+
+
+
+      <!-- EXPERIMENT RESULTS -->
+
+      <div class="metrics-bar">
+        <div class="metric-cell">
+          <div class="metric-big">+22%</div>
+          <div class="metric-lbl">CRM tool usage</div>
+          <div class="metric-note">Users oriented faster and built habits around core tools — the core hypothesis confirmed.</div>
+        </div>
+        <div class="metric-cell">
+          <div class="metric-big">+4.3pp</div>
+          <div class="metric-lbl">Starter retention at week 7</div>
+          <div class="metric-note">The most commercially meaningful signal — connects directly to LTV and revenue health.</div>
+        </div>
+        <div class="metric-cell">
+          <div class="metric-big">+8%</div>
+          <div class="metric-lbl">Weekly active teams</div>
+          <div class="metric-note">Team-level engagement strengthened — a retention signal beyond individual users.</div>
+        </div>
+        <div class="metric-cell">
+          <div class="metric-big">CVR flat</div>
+          <div class="metric-lbl">Purchase conversion held</div>
+          <div class="metric-note">When upgrade intent is real, users find the path. What we had shown in the nav wasn't converting — it was noise.</div>
+        </div>
+      </div>
+
+
+
+
+    </div>
+  </div>
+</div>
+
+<div id="closing"></div>
+</body></html>
