@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<!-- saved from url=(0066)file:///Users/vmontrucchio/Downloads/nav_case_study_mockup_54.html -->
+<!-- saved from url=(0050)file:///Users/vmontrucchio/Downloads/index_16.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Navigating Complexity at HubSpot Scale — Valeria Montrucchio</title>
-<link href="./Navigating Complexity at HubSpot Scale — Valeria Montrucchio_files/css2" rel="stylesheet">
-<script src="./Navigating Complexity at HubSpot Scale — Valeria Montrucchio_files/chart.umd.min.js"></script>
+<link href="file:///Users/vmontrucchio/Downloads/Navigating%20Complexity%20at%20HubSpot%20Scale%20%E2%80%94%20Valeria%20Montrucchio_files/css2" rel="stylesheet">
+<script src="file:///Users/vmontrucchio/Downloads/Navigating%20Complexity%20at%20HubSpot%20Scale%20%E2%80%94%20Valeria%20Montrucchio_files/chart.umd.min.js"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -377,13 +377,12 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--i
 
 <!-- DOTS NAV -->
 <nav class="chapter-dots" aria-label="Section navigation">
-  <div class="cdot active" data-section="hero" title="Overview"></div>
-  <div class="cdot" data-section="act1" title="Act 1 — Breaking the deadlock"></div>
-  <div class="cdot" data-section="ch2" title="The JTBD shift"></div>
-  <div class="cdot" data-section="ch3" title="Launch &amp; validation"></div>
-  <div class="cdot" data-section="bridge" title="Bookmarks signal"></div>
-  <div class="cdot" data-section="ch5" title="Personalized nav"></div>
-  <div class="cdot" data-section="closing" title="Closing"></div>
+  <div class="cdot" data-section="act1" data-label="The problem"></div>
+  <div class="cdot" data-section="ch2" data-label="The structural bet"></div>
+  <div class="cdot" data-section="ch3" data-label="Customer validation"></div>
+  <div class="cdot" data-section="bridge" data-label="Bookmarks"></div>
+  <div class="cdot active" data-section="ch5" data-label="Personalized Nav"></div>
+  <div class="cdot" data-section="closing" data-label="Next"></div>
 </nav>
 
 <!-- SITE NAV -->
@@ -430,27 +429,17 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--i
 
         <!-- VIDEO: original nav -->
         <div>
-          <p style="font-size:10px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:8px;font-weight:500;">Video · Original horizontal navigation</p>
-          <div style="background:var(--bg-dark);border-radius:10px;overflow:hidden;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;border:1px solid var(--border);">
-            <!-- Replace src with your video file or Loom/Vimeo embed URL -->
-            <!-- Option A: local file → <video src="nav-original.mp4" controls style="width:100%;height:100%;object-fit:cover;"></video> -->
-            <!-- Option B: Loom embed → <iframe src="https://www.loom.com/embed/YOUR_ID" frameborder="0" allowfullscreen style="width:100%;height:100%;"></iframe> -->
-            <div style="width:44px;height:44px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.3);display:flex;align-items:center;justify-content:center;">
-              <div style="width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-left:14px solid rgba(255,255,255,0.6);margin-left:3px;"></div>
-            </div>
-            <p style="font-size:12px;color:rgba(255,255,255,0.4);text-align:center;">Original nav · video<br><span style="font-size:10px;">Replace with video file or Loom embed</span></p>
+          <div style="border-radius:10px;overflow:hidden;aspect-ratio:16/9;">
+            <video src="nav-2023.mp4" controls="" style="width:100%;height:100%;object-fit:cover;display:block;"></video>
           </div>
-          <p style="font-size:11px;color:var(--muted);margin-top:6px;line-height:1.5;">Hub-centric horizontal nav — shows the switching behaviour and lack of scalability</p>
+          <p style="font-size:11px;color:var(--muted);margin-top:6px;line-height:1.5;">Original navigation</p>
         </div>
 
         <!-- SCREENSHOT: original nav -->
         <div>
-          <p style="font-size:10px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:8px;font-weight:500;">Screenshot · Original horizontal navigation</p>
-          <div style="background:var(--bg-card);border-radius:10px;overflow:hidden;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;border:1.5px dashed var(--border);">
-            <!-- Replace with: <img src="nav-original-screenshot.png" style="width:100%;height:100%;object-fit:cover;" alt="Original HubSpot horizontal navigation"> -->
-            <p style="font-size:12px;color:var(--muted);text-align:center;">nav-original-screenshot.png<br><span style="font-size:10px;">Upload to GitHub alongside index.html</span></p>
+          <div style="border-radius:10px;overflow:hidden;aspect-ratio:16/9;">
+            <img src="file:///Users/vmontrucchio/Downloads/original-nav.jpg" style="width:100%;height:100%;object-fit:cover;" alt="Original HubSpot horizontal navigation">
           </div>
-          <p style="font-size:11px;color:var(--muted);margin-top:6px;line-height:1.5;">Static reference — the full hub bar visible, no room to scale</p>
         </div>
 
       </div>
@@ -515,43 +504,35 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--i
   <div class="chapter-body">
     <div class="chapter-body-inner">
 
-      <div class="grid-2" style="margin-bottom:28px;align-items:start;">
+      <!-- GIF + QUOTES side by side -->
+      <div class="grid-2" style="margin-bottom:24px;align-items:start;">
 
         <!-- GIF: vertical nav tested with customers -->
         <div>
-          <p style="font-size:10px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:8px;font-weight:500;">GIF · Vertical navigation — customer testing</p>
-          <div style="background:var(--bg-card);border-radius:10px;overflow:hidden;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;border:1.5px dashed var(--border);">
-            <!-- Replace with: <img src="nav-vertical.gif" style="width:100%;height:100%;object-fit:cover;" alt="Vertical JTBD navigation"> -->
-            <!-- Or for better performance: <video src="nav-vertical.mp4" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;"></video> -->
-            <p style="font-size:12px;color:var(--muted);text-align:center;">nav-vertical.gif<br><span style="font-size:10px;">Upload to GitHub alongside index.html</span></p>
+          <div style="border-radius:10px;overflow:hidden;aspect-ratio:16/9;">
+            <img src="./index_files/nav-test.gif" style="width:100%;height:100%;object-fit:cover;" alt="Vertical JTBD navigation">
           </div>
-          <p style="font-size:11px;color:var(--muted);margin-top:6px;line-height:1.5;">New vertical JTBD nav — tested with 141 customers, Sep 2023. 85% positive first impressions.</p>
+          <p style="font-size:11px;color:var(--muted);margin-top:6px;line-height:1.5;">Vertical nav, tested with 140+ customers</p>
         </div>
 
-        <!-- GOVERNANCE PRINCIPLE -->
-        <div>
-          <div style="background:var(--bg-card);border-left:3px solid var(--purple);border-radius:0 10px 10px 0;padding:22px 26px;height:100%;">
-            <p style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--purple);margin-bottom:10px;">Governance principle</p>
-            <p style="font-size:15px;color:var(--ink);line-height:1.75;">Tools were grouped into JTBD categories, but each tool lived in exactly one menu. No duplicates. This preserved IA integrity — we reduced the findability problem. We knew we hadn't eliminated it.</p>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- REAL CUSTOMER QUOTES -->
-      <div class="grid-2" style="margin-bottom:20px;">
-        <div>
+        <!-- QUOTES stacked on the right -->
+        <div style="display:flex;flex-direction:column;gap:12px;">
           <div style="background:rgba(123,111,160,0.08);border-radius:8px;padding:12px 14px;">
             <p style="font-size:14px;font-style:italic;color:#1E2E2B;line-height:1.6;margin-bottom:6px;">"It feels a lot cleaner… Visually it feels less overwhelming."</p>
             <p style="font-size:11px;color:var(--muted);">Noraya · Service Support · HubSpot customer · Moderated study</p>
           </div>
-        </div>
-        <div>
           <div style="background:rgba(123,111,160,0.08);border-radius:8px;padding:12px 14px;">
             <p style="font-size:14px;font-style:italic;color:#1E2E2B;line-height:1.6;margin-bottom:6px;">"It reminds me of other CRM systems, the interface is very clean and easy to navigate."</p>
             <p style="font-size:11px;color:var(--muted);">Non-customer · First impression · Unmoderated study</p>
           </div>
         </div>
+
+      </div>
+
+      <!-- GOVERNANCE PRINCIPLE — full width below -->
+      <div style="background:var(--bg-card);border-left:3px solid var(--purple);border-radius:0 10px 10px 0;padding:22px 26px;margin-bottom:24px;">
+        <p style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--purple);margin-bottom:10px;">Governance principle</p>
+        <p style="font-size:15px;color:var(--ink);line-height:1.75;">Tools were grouped into JTBD categories, but each tool lived in exactly one menu. No duplicates. This preserved IA integrity — we reduced the findability problem. We knew we hadn't eliminated it.</p>
       </div>
 
       <!-- RESEARCH STAT -->
@@ -610,13 +591,19 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--i
         </div>
       </div>
 
-      <p style="font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:14px;font-weight:500;">↗ Video · Loom walkthrough — hover vs click, workspace switching, bookmarks · Figma: Navigation refresh 2024</p>
-      <div class="media video" style="margin-bottom:28px;">
-        <span class="media-badge badge-video">Video · 2–3 min Loom</span>
-        <div class="media-inner">
-          <div class="play-btn"><div class="play-tri"></div></div>
-          <div class="video-label">2024 nav interaction model — hover vs click, workspace switching, bookmark workflow</div>
-          <div class="video-source">Record over Figma: Navigation refresh 2024 prototype</div>
+      <!-- TWO GIFs: before and after -->
+      <div class="grid-2" style="margin-bottom:28px;align-items:start;">
+        <div>
+          <div style="border-radius:10px;overflow:hidden;aspect-ratio:16/9;">
+            <img src="file:///Users/vmontrucchio/Downloads/nav01.gif" style="width:100%;height:100%;object-fit:cover;" alt="Nav launched in May 2024">
+          </div>
+          <p style="font-size:11px;color:var(--muted);margin-top:6px;line-height:1.5;">Nav launched in May 2024</p>
+        </div>
+        <div>
+          <div style="border-radius:10px;overflow:hidden;aspect-ratio:16/9;">
+            <img src="file:///Users/vmontrucchio/Downloads/nav02.gif" style="width:100%;height:100%;object-fit:cover;" alt="Solution, July 2024">
+          </div>
+          <p style="font-size:11px;color:var(--muted);margin-top:6px;line-height:1.5;">Solution, July 2024</p>
         </div>
       </div>
 
@@ -629,14 +616,17 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--i
       <div class="challenge">
         <div class="challenge-n">01</div>
         <div style="flex:1;">
-          <div class="challenge-title">Too many clicks — 35.6%</div>
+          <div class="challenge-title">Too many clicks (35%) · Disruptive hover (31%)</div>
           <div class="challenge-cols">
             <div>
-              <div class="challenge-label challenge-label-b">Customer feedback</div>
-              <div class="challenge-before">
+              <div class="challenge-before" style="display:flex;flex-direction:column;gap:10px;">
                 <div style="background:rgba(123,111,160,0.08);border-radius:8px;padding:12px 14px;">
-                <p style="font-size:13px;font-style:italic;color:#1E2E2B;line-height:1.6;margin-bottom:6px;">"Too much clicking is involved. I want to just hover over the sections I want to expand rather than clicking every time."</p>
-                <p style="font-size:11px;color:var(--muted);">In-app survey · July 2024</p>
+                  <p style="font-size:13px;font-style:italic;color:#1E2E2B;line-height:1.6;margin-bottom:6px;">"Too much clicking is involved. I want to just hover over the sections I want to expand rather than clicking every time."</p>
+                  <p style="font-size:11px;color:var(--muted);">In-app survey · July 2024</p>
+                </div>
+                <div style="background:rgba(123,111,160,0.08);border-radius:8px;padding:12px 14px;">
+                  <p style="font-size:13px;font-style:italic;color:#1E2E2B;line-height:1.6;margin-bottom:6px;">"The bar keeps opening when you come near the left. It makes working in the left column very difficult."</p>
+                  <p style="font-size:11px;color:var(--muted);">In-app survey · July 2024</p>
                 </div>
               </div>
             </div>
@@ -648,35 +638,12 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--i
         </div>
       </div>
 
-      <div class="challenge">
+      <div class="challenge" style="border-bottom:none;">
         <div class="challenge-n">02</div>
         <div style="flex:1;">
-          <div class="challenge-title">Disruptive hover — 31.4%</div>
+          <div class="challenge-title">Takes up too much space (19%)</div>
           <div class="challenge-cols">
             <div>
-              <div class="challenge-label challenge-label-b">Customer feedback</div>
-              <div class="challenge-before">
-                <div style="background:rgba(123,111,160,0.08);border-radius:8px;padding:12px 14px;">
-                <p style="font-size:13px;font-style:italic;color:#1E2E2B;line-height:1.6;margin-bottom:6px;">"The bar keeps opening when you come near the left. It makes working in the left column very difficult."</p>
-                <p style="font-size:11px;color:var(--muted);">In-app survey · July 2024</p>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div class="challenge-label challenge-label-a">Same fix</div>
-              <div class="challenge-after">Both issues shared the same root cause — the hover-to-expand interaction. Removing it addressed the click perception and the disruptive hover in one change.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="challenge" style="border-bottom:none;">
-        <div class="challenge-n">03</div>
-        <div style="flex:1;">
-          <div class="challenge-title">Takes up too much space — 18.8%</div>
-          <div class="challenge-cols">
-            <div>
-              <div class="challenge-label challenge-label-b">Customer feedback</div>
               <div class="challenge-before">
                 <div style="background:rgba(123,111,160,0.08);border-radius:8px;padding:12px 14px;">
                 <p style="font-size:13px;font-style:italic;color:#1E2E2B;line-height:1.6;margin-bottom:6px;">"I like my horizontal space — you have taken it away for no reason while leaving a top bar which is mostly empty."</p>
@@ -717,6 +684,16 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--i
   <div class="chapter-body">
     <div class="chapter-body-inner">
 
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:28px;align-items:center;">
+        <div style="display:flex;justify-content:center;">
+          <video src="bookmarks-nav.mp4" controls="" style="width:100%;border-radius:10px;display:block;"></video>
+        </div>
+        <div style="display:flex;flex-direction:column;justify-content:center;gap:16px;">
+          <p style="font-size:17px;color:var(--ink-mid);line-height:1.8;margin:0;">User-controlled navigation outperformed any taxonomy we could design for them. When users shaped their own navigation, they used the product with precision because they knew what they needed. That behavioural signal became the case for building a full discovery system around each user.</p>
+          <p style="font-size:17px;color:var(--ink);line-height:1.8;margin:0;font-weight:500;">From one navigation for everyone, to a different nav for each user.</p>
+        </div>
+      </div>
+
       <div class="bk-metrics">
         <div class="bk-metric">
           <div class="bk-num">~59<span>%</span></div>
@@ -735,9 +712,8 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--i
         </div>
       </div>
 
-      <p style="font-size:17px;color:var(--ink-mid);line-height:1.8;max-width:640px;margin:28px 0 12px;">User-controlled navigation outperformed any taxonomy we could design for them. When users shaped their own navigation, they used the product with precision because they knew what they needed. That behavioural signal became the case for building a full discovery system around each user.</p>
 
-      <p style="font-size:17px;color:var(--ink);line-height:1.8;max-width:640px;margin:0 0 0;font-weight:500;">From one navigation for everyone, to a different nav for each user.</p>
+
 
     </div>
   </div>
@@ -784,21 +760,37 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--i
 
       <!-- VIDEO: personalized nav -->
       <div style="margin-top:28px;">
-        <p style="font-size:10px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:8px;font-weight:500;">Video · Personalized navigation walkthrough</p>
-        <div style="background:var(--bg-dark);border-radius:10px;overflow:hidden;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;border:1px solid var(--border);">
-          <!-- Replace with: <video src="nav-personalized.mp4" controls style="width:100%;height:100%;object-fit:cover;"></video> -->
-          <!-- Or Loom: <iframe src="https://www.loom.com/embed/YOUR_ID" frameborder="0" allowfullscreen style="width:100%;height:100%;"></iframe> -->
-          <div style="width:44px;height:44px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.3);display:flex;align-items:center;justify-content:center;">
-            <div style="width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-left:14px solid rgba(255,255,255,0.6);margin-left:3px;"></div>
-          </div>
-          <p style="font-size:12px;color:rgba(255,255,255,0.4);text-align:center;">Personalized navigation · video walkthrough<br><span style="font-size:10px;">Replace with video file or Loom embed</span></p>
+        <video src="personalized-nav.mp4" controls="" style="width:100%;border-radius:10px;display:block;"></video>
+      </div>
+
+      <!-- EXPERIMENT RESULTS -->
+      <div class="metrics-bar" style="margin-top:28px;">
+        <div class="metric-cell">
+          <div class="metric-big">+22%</div>
+          <div class="metric-lbl">CRM tool usage</div>
+          <div class="metric-note">Users oriented faster and built habits around core tools — the core hypothesis confirmed.</div>
+        </div>
+        <div class="metric-cell">
+          <div class="metric-big">+4.3pp</div>
+          <div class="metric-lbl">Starter retention at week 7</div>
+          <div class="metric-note">The most commercially meaningful signal — connects directly to LTV and revenue health.</div>
+        </div>
+        <div class="metric-cell">
+          <div class="metric-big">+8%</div>
+          <div class="metric-lbl">Weekly active teams</div>
+          <div class="metric-note">Team-level engagement strengthened — a retention signal beyond individual users.</div>
+        </div>
+        <div class="metric-cell">
+          <div class="metric-big">CVR flat</div>
+          <div class="metric-lbl">Purchase conversion held</div>
+          <div class="metric-note">When upgrade intent is real, users find the path. What we had shown in the nav wasn't converting — it was noise.</div>
         </div>
       </div>
 
       <!-- AGENTIC SYSTEM -->
       <div style="margin:40px 0 20px;padding-top:32px;border-top:1px solid var(--border);">
         <p style="font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--purple);margin-bottom:10px;">Navigation as the surface of an agentic onboarding system</p>
-        <h3 style="font-family:&#39;DM Serif Display&#39;,serif;font-size:clamp(22px,3vw,34px);color:var(--ink);line-height:1.2;margin-bottom:16px;max-width:680px;">The personalized nav isn't a smarter menu.</h3>
+        <h3 style="font-family:&#39;DM Serif Display&#39;,serif;font-size:clamp(22px,3vw,34px);color:var(--ink);line-height:1.2;margin-bottom:16px;max-width:680px;">The personalized nav isn't a smarter menu</h3>
         <p style="font-size:18px;color:var(--ink-mid);line-height:1.8;max-width:640px;margin-bottom:0;">It's the first moment a new HubSpot customer sees a product that already knows something about them — built from their stated goals, enriched by data about who they are.</p>
       </div>
 
@@ -856,30 +848,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--i
 
 
 
-      <!-- EXPERIMENT RESULTS -->
 
-      <div class="metrics-bar">
-        <div class="metric-cell">
-          <div class="metric-big">+22%</div>
-          <div class="metric-lbl">CRM tool usage</div>
-          <div class="metric-note">Users oriented faster and built habits around core tools — the core hypothesis confirmed.</div>
-        </div>
-        <div class="metric-cell">
-          <div class="metric-big">+4.3pp</div>
-          <div class="metric-lbl">Starter retention at week 7</div>
-          <div class="metric-note">The most commercially meaningful signal — connects directly to LTV and revenue health.</div>
-        </div>
-        <div class="metric-cell">
-          <div class="metric-big">+8%</div>
-          <div class="metric-lbl">Weekly active teams</div>
-          <div class="metric-note">Team-level engagement strengthened — a retention signal beyond individual users.</div>
-        </div>
-        <div class="metric-cell">
-          <div class="metric-big">CVR flat</div>
-          <div class="metric-lbl">Purchase conversion held</div>
-          <div class="metric-note">When upgrade intent is real, users find the path. What we had shown in the nav wasn't converting — it was noise.</div>
-        </div>
-      </div>
 
 
 
@@ -889,4 +858,55 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--i
 </div>
 
 <div id="closing"></div>
+
+<script>
+  const dots = document.querySelectorAll('.cdot');
+  const sections = ['act1', 'ch2', 'ch3', 'bridge', 'ch5', 'closing'];
+
+  // Create tooltip element
+  const tooltip = document.createElement('div');
+  tooltip.style.cssText = `
+    position: fixed; right: 36px;
+    background: var(--dark); color: #fff;
+    font-size: 11px; padding: 5px 10px; border-radius: 4px;
+    white-space: nowrap; pointer-events: none;
+    opacity: 0; transition: opacity 0.15s;
+    z-index: 200; transform: translateY(-50%);
+  `;
+  document.body.appendChild(tooltip);
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('mouseenter', () => {
+      const label = dot.dataset.label;
+      const rect = dot.getBoundingClientRect();
+      tooltip.textContent = label;
+      tooltip.style.top = (rect.top + rect.height / 2) + 'px';
+      tooltip.style.opacity = '1';
+    });
+    dot.addEventListener('mouseleave', () => {
+      tooltip.style.opacity = '0';
+    });
+    dot.addEventListener('click', () => {
+      const el = document.getElementById(sections[i]);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      tooltip.style.opacity = '0';
+    });
+  });
+
+  function updateDots() {
+    const scrollY = window.scrollY + window.innerHeight / 3;
+    let current = 0;
+    sections.forEach((id, i) => {
+      const el = document.getElementById(id);
+      if (el && el.offsetTop <= scrollY) current = i;
+    });
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === current);
+    });
+  }
+
+  window.addEventListener('scroll', updateDots, { passive: true });
+  updateDots();
+</script><div style="position: fixed; right: 36px; background: var(--dark); color: rgb(255, 255, 255); font-size: 11px; padding: 5px 10px; border-radius: 4px; white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity 0.15s; z-index: 200; transform: translateY(-50%); top: 422.5px;">Customer validation</div>
+
 </body></html>
