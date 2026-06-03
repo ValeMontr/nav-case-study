@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<!-- saved from url=(0049)file:///Users/vmontrucchio/Downloads/index_2.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- saved from url=(0049)file:///Users/vmontrucchio/Downloads/index_3.html -->
+<html lang="en" style="overflow: hidden;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Navigating Complexity at HubSpot Scale — Valeria Montrucchio</title>
@@ -414,10 +414,10 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--i
 }
 </style>
 </head>
-<body style="">
+<body style="overflow: hidden;">
 
 <!-- PASSWORD GATE -->
-<div id="password-gate" style="display: none;">
+<div id="password-gate">
   <div class="gate-box">
     <h2>Valeria Montrucchio</h2>
     <p>This is a password-protected portfolio.<br>Please enter the password to continue.</p>
@@ -433,7 +433,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--i
     if (input === 'ValeriaDesign') {
       document.getElementById('password-gate').style.display = 'none';
       document.body.style.overflow = '';
-      sessionStorage.setItem('unlocked', 'true');
+      document.documentElement.style.overflow = '';
     } else {
       document.getElementById('gate-error').textContent = 'Incorrect password. Try again.';
       document.getElementById('gate-input').value = '';
@@ -441,13 +441,9 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--i
     }
   }
   function handleKey(e) { if (e.key === 'Enter') checkPassword(); }
-  window.addEventListener('DOMContentLoaded', () => {
-    if (sessionStorage.getItem('unlocked') === 'true') {
-      document.getElementById('password-gate').style.display = 'none';
-    } else {
-      document.body.style.overflow = 'hidden';
-    }
-  });
+  // Lock scroll immediately on load
+  document.documentElement.style.overflow = 'hidden';
+  document.body.style.overflow = 'hidden';
 </script>
 
 <!-- DOTS NAV -->
