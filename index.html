@@ -1,9 +1,50 @@
 <!DOCTYPE html>
-<!-- saved from url=(0050)file:///Users/vmontrucchio/Downloads/index_16.html -->
+<!-- saved from url=(0049)file:///Users/vmontrucchio/Downloads/index_2.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Navigating Complexity at HubSpot Scale — Valeria Montrucchio</title>
+<style>
+#password-gate {
+  position: fixed; inset: 0; z-index: 9999;
+  background: #1E2E2B;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+}
+#password-gate .gate-box {
+  background: #EFF2F0; border-radius: 16px;
+  padding: 48px 40px; max-width: 380px;
+  width: 90%; text-align: center;
+}
+#password-gate h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 24px; color: #1E2E2B; margin-bottom: 8px;
+}
+#password-gate p {
+  font-size: 14px; color: #7A9490;
+  margin-bottom: 28px; line-height: 1.6;
+}
+#password-gate input {
+  width: 100%; padding: 12px 16px;
+  border: 1.5px solid #C8D4D0; border-radius: 8px;
+  font-size: 15px; color: #1E2E2B; background: #fff;
+  outline: none; margin-bottom: 12px;
+  text-align: center; letter-spacing: 0.05em;
+}
+#password-gate input:focus { border-color: #7B6FA0; }
+#password-gate button {
+  width: 100%; padding: 12px;
+  background: #1E2E2B; color: #fff;
+  border: none; border-radius: 8px;
+  font-size: 15px; font-weight: 500;
+  cursor: pointer; transition: background 0.2s;
+}
+#password-gate button:hover { background: #3D5250; }
+#password-gate .error {
+  font-size: 13px; color: #c0392b;
+  margin-top: 10px; min-height: 18px;
+}
+</style>
 <link href="file:///Users/vmontrucchio/Downloads/Navigating%20Complexity%20at%20HubSpot%20Scale%20%E2%80%94%20Valeria%20Montrucchio_files/css2" rel="stylesheet">
 <script src="file:///Users/vmontrucchio/Downloads/Navigating%20Complexity%20at%20HubSpot%20Scale%20%E2%80%94%20Valeria%20Montrucchio_files/chart.umd.min.js"></script>
 <style>
@@ -373,15 +414,49 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--i
 }
 </style>
 </head>
-<body>
+<body style="">
+
+<!-- PASSWORD GATE -->
+<div id="password-gate" style="display: none;">
+  <div class="gate-box">
+    <h2>Valeria Montrucchio</h2>
+    <p>This is a password-protected portfolio.<br>Please enter the password to continue.</p>
+    <input id="gate-input" type="password" placeholder="Enter password" onkeydown="handleKey(event)" autofocus="">
+    <button onclick="checkPassword()">Enter</button>
+    <div id="gate-error" class="error"></div>
+  </div>
+</div>
+
+<script>
+  function checkPassword() {
+    const input = document.getElementById('gate-input').value;
+    if (input === 'ValeriaDesign') {
+      document.getElementById('password-gate').style.display = 'none';
+      document.body.style.overflow = '';
+      sessionStorage.setItem('unlocked', 'true');
+    } else {
+      document.getElementById('gate-error').textContent = 'Incorrect password. Try again.';
+      document.getElementById('gate-input').value = '';
+      document.getElementById('gate-input').focus();
+    }
+  }
+  function handleKey(e) { if (e.key === 'Enter') checkPassword(); }
+  window.addEventListener('DOMContentLoaded', () => {
+    if (sessionStorage.getItem('unlocked') === 'true') {
+      document.getElementById('password-gate').style.display = 'none';
+    } else {
+      document.body.style.overflow = 'hidden';
+    }
+  });
+</script>
 
 <!-- DOTS NAV -->
 <nav class="chapter-dots" aria-label="Section navigation">
-  <div class="cdot" data-section="act1" data-label="The problem"></div>
+  <div class="cdot active" data-section="act1" data-label="The problem"></div>
   <div class="cdot" data-section="ch2" data-label="The structural bet"></div>
   <div class="cdot" data-section="ch3" data-label="Customer validation"></div>
   <div class="cdot" data-section="bridge" data-label="Bookmarks"></div>
-  <div class="cdot active" data-section="ch5" data-label="Personalized Nav"></div>
+  <div class="cdot" data-section="ch5" data-label="Personalized Nav"></div>
   <div class="cdot" data-section="closing" data-label="Next"></div>
 </nav>
 
@@ -510,7 +585,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--i
         <!-- GIF: vertical nav tested with customers -->
         <div>
           <div style="border-radius:10px;overflow:hidden;aspect-ratio:16/9;">
-            <img src="./index_files/nav-test.gif" style="width:100%;height:100%;object-fit:cover;" alt="Vertical JTBD navigation">
+            <img src="file:///Users/vmontrucchio/Downloads/nav-test.gif" style="width:100%;height:100%;object-fit:cover;" alt="Vertical JTBD navigation">
           </div>
           <p style="font-size:11px;color:var(--muted);margin-top:6px;line-height:1.5;">Vertical nav, tested with 140+ customers</p>
         </div>
@@ -775,11 +850,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--i
           <div class="metric-lbl">Starter retention at week 7</div>
           <div class="metric-note">The most commercially meaningful signal — connects directly to LTV and revenue health.</div>
         </div>
-        <div class="metric-cell">
-          <div class="metric-big">+8%</div>
-          <div class="metric-lbl">Weekly active teams</div>
-          <div class="metric-note">Team-level engagement strengthened — a retention signal beyond individual users.</div>
-        </div>
+
         <div class="metric-cell">
           <div class="metric-big">CVR flat</div>
           <div class="metric-lbl">Purchase conversion held</div>
@@ -907,6 +978,6 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--i
 
   window.addEventListener('scroll', updateDots, { passive: true });
   updateDots();
-</script><div style="position: fixed; right: 36px; background: var(--dark); color: rgb(255, 255, 255); font-size: 11px; padding: 5px 10px; border-radius: 4px; white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity 0.15s; z-index: 200; transform: translateY(-50%); top: 422.5px;">Customer validation</div>
+</script><div style="position: fixed; right: 36px; background: var(--dark); color: rgb(255, 255, 255); font-size: 11px; padding: 5px 10px; border-radius: 4px; white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity 0.15s; z-index: 200; transform: translateY(-50%);"></div>
 
 </body></html>
