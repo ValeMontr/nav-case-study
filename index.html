@@ -377,36 +377,6 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--i
 </head>
 <body>
 
-<!-- PASSWORD GATE -->
-<div id="password-gate">
-  <div class="gate-box">
-    <h2>Valeria Montrucchio</h2>
-    <p>This is a password-protected portfolio.<br>Please enter the password to continue.</p>
-    <input id="gate-input" type="password" placeholder="Enter password" onkeydown="handleKey(event)" autofocus>
-    <button onclick="checkPassword()">Enter</button>
-    <div id="gate-error" class="error"></div>
-  </div>
-</div>
-
-<script>
-  function checkPassword() {
-    const input = document.getElementById('gate-input').value;
-    if (input === 'ValeriaDesign') {
-      document.getElementById('password-gate').style.display = 'none';
-      document.body.style.overflow = '';
-      document.documentElement.style.overflow = '';
-    } else {
-      document.getElementById('gate-error').textContent = 'Incorrect password. Try again.';
-      document.getElementById('gate-input').value = '';
-      document.getElementById('gate-input').focus();
-    }
-  }
-  function handleKey(e) { if (e.key === 'Enter') checkPassword(); }
-  // Lock scroll immediately on load
-  document.documentElement.style.overflow = 'hidden';
-  document.body.style.overflow = 'hidden';
-</script>
-
 <!-- DOTS NAV -->
 <nav class="chapter-dots" aria-label="Section navigation">
   <div class="cdot active" data-section="act1" data-label="Problem"></div>
